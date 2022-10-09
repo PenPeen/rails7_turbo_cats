@@ -49,6 +49,7 @@ gem "kaminari"
 gem "ransack"
 gem "bootstrap_form"
 gem "mysql2", "~> 0.5"
+gem "pry-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
