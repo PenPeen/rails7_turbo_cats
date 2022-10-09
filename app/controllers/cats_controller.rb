@@ -1,4 +1,5 @@
 class CatsController < ApplicationController
+  # Before Action
   before_action :set_cat, only: %i[ show edit update destroy ]
 
   # GET /cats
@@ -26,7 +27,10 @@ class CatsController < ApplicationController
     @cat = Cat.new(cat_params)
 
     if @cat.save
-      redirect_to @cat, notice: "ねこを登録しました。"
+      flash.now.notice ="猫を登録しました"
+
+      # Turbo_Streams
+      # create.turbo_stream.erb をレンダリング
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,8 +38,13 @@ class CatsController < ApplicationController
 
   # PATCH/PUT /cats/1
   def update
+    # turbo_stream
     if @cat.update(cat_params)
-      redirect_to @cat, notice: "ねこを更新しました。"
+      flash.now.notice = "猫情報を更新しました！"
+      
+      # Turbo_Streams
+      # update.turbo_stream.erb をレンダリング
+
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,16 +53,17 @@ class CatsController < ApplicationController
   # DELETE /cats/1
   def destroy
     @cat.destroy
-    redirect_to cats_url, notice: "ねこを削除しました。"
+    flash.now.notice = "ねこを削除しました"
+
+    # Turbo_Streams
+      # destroy.turbo_stream.erb をレンダリング
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_cat
       @cat = Cat.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def cat_params
       params.require(:cat).permit(:name, :age)
     end
