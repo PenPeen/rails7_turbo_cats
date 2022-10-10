@@ -1,12 +1,11 @@
 
 <%# Flashメッセージの表示 %>
-<%= turbo_stream.update "flash", partial: "application/flash" %>
+<%= turbo_stream.append "flashes", partial: "application/flash" %>
 
 <%# Edit画面 ~ show画面 %>
 <%= turbo_stream.replace @cat %>
 
 <%# 上記は以下と同じ %>
 <%#= turbo_stream.replace @cat do %>
-  <%#= render partial: "cats/cat",
-             locals: { cat: @cat } %>
+  <%#= render partial: "cats/cat",locals: { cat: @cat } %>
 <%# end %>
