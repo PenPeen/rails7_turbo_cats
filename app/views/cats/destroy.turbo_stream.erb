@@ -1,6 +1,6 @@
 
-<%# Flashメッセージの表示  %>
-<%= turbo_stream.update "flash", partial: "application/flash" %>
-
-<%# 削除した要素の削除  %>
+<%# 削除した要素をDOMツリーから削除  %>
 <%= turbo_stream.remove @cat %>
+
+<%# Flashメッセージの表示  %>
+<%= turbo_stream.append "flashes", partial: "application/flash" %>

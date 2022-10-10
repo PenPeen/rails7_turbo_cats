@@ -27,7 +27,7 @@ class CatsController < ApplicationController
     @cat = Cat.new(cat_params)
 
     if @cat.save
-      flash.now.notice ="猫を登録しました"
+      flash.now.notice ="ねこを登録しました！！"
 
       # Turbo_Streams
       # create.turbo_stream.erb をレンダリング
@@ -40,7 +40,7 @@ class CatsController < ApplicationController
   def update
     # turbo_stream
     if @cat.update(cat_params)
-      flash.now.notice = "猫情報を更新しました！"
+      flash.now.notice = "ねこ情報を更新しました！"
       
       # Turbo_Streams
       # update.turbo_stream.erb をレンダリング
@@ -53,7 +53,7 @@ class CatsController < ApplicationController
   # DELETE /cats/1
   def destroy
     @cat.destroy
-    flash.now.notice = "ねこを削除しました"
+    flash.now.notice = "ねこを削除しました！！"
 
     # Turbo_Streams
       # destroy.turbo_stream.erb をレンダリング
