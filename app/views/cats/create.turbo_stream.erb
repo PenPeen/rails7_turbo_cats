@@ -1,8 +1,8 @@
 <%# 作成したCatを一覧に追加 %>
-<%= turbo_stream.after "new_cat", @cat %>
+<%= turbo_stream.prepend "cats-list", @cat %>
 
 <%# 作成フォームを空にする %>
-<%= turbo_stream.update "new_cat", "" %>
+<%#= turbo_stream.update "new_cat", "" %>
 
 <%# Flashメッセージの表示 %>
 <%= turbo_stream.update "flash", partial: "application/flash" %>
