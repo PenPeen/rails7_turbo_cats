@@ -73,12 +73,16 @@
 
       <%# 猫一覧 %>
       <div id="cats-list">
-        <%= render @cats %>
-      </div>
+       <%# 今のページの`<turbo-frame>` %>
+       <%= turbo_frame_tag "cats-page-#{@cats.current_page}" do %>
+         <%# 今のページで取得したCat一覧 %>
+         <%= render @cats %>
 
-      <div class="d-flex justify-content-end mt-3">
-        <%= paginate @cats %>
-      </div>
+         <%# 遅延読み込みで次ページを取得する`<turbo-frame>` %>
+         <%= turbo_frame_tag "cats-page-#{@cats.next_page}", loading: :lazy, src: path_to_next_page(@cats) %>
+       <% end %>
+     </div>
+
     </div>
   </div>
 <% end %>
